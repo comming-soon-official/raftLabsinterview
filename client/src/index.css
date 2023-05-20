@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.profile_img{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    aspect-ratio: 1/1;
+}
