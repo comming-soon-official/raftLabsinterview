@@ -18,6 +18,7 @@ const Profile = () => {
     getPostsbyUsers().then((res) => {
       setPosts(res);
     });
+    setBio(currentuser.get("bio"));
   }, []);
   const handleFillBio = (e) => {
     let currentbio = e.target.value;
@@ -65,7 +66,7 @@ const Profile = () => {
           ) : null}
           <textarea
             disabled={edit === false ? "disabled" : ""}
-            value={edit === false ? currentuser.get("bio") : null}
+            value={bio}
             onChange={handleFillBio}
             className="textarea mt-2"
             placeholder="Fill Your Bio"
@@ -81,7 +82,7 @@ const Profile = () => {
           )}
         </div>
       </div>
-      <div className="flex flex-wrap">
+      <div className="ml-0 flex flex-wrap justify-center md:justify-start md:ml-10">
         {posts.map((items, i) => (
           <PostCards
             posts={items}

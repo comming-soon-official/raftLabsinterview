@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-2xl">
+      <div className="navbar bg-base-100 shadow-lg">
         <div className="flex-1">
           <a href="/" className="btn btn-ghost normal-case text-xl">
             RaftLabsMedia

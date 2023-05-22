@@ -33,7 +33,7 @@ const OthersProfile = () => {
   }, [receivedProps]);
 
   useEffect(() => {
-    getFollowedorNot().then((res) => {
+    getFollowedorNot(userInfo).then((res) => {
       if (res.length === 0) {
         setFollowed(false);
         setFollowerID("");
@@ -41,11 +41,12 @@ const OthersProfile = () => {
         setFollowed(true);
         setFollowerID(res[0].id);
       }
+      console.log(res);
     });
-    getFollowers().then((res) => {
+    getFollowers(userInfo).then((res) => {
       setFollowers(res.length);
     });
-  }, []);
+  }, [userInfo]); // Pass userInfo as a dependency to re-run the effect when it changes
 
   const handleFollow = () => {
     if (currentuser) {
@@ -55,7 +56,7 @@ const OthersProfile = () => {
           setFollowers((prevFollowers) => prevFollowers - 1);
         });
       } else {
-        addFollow().then((res) => {
+        addFollow(userInfo).then((res) => {
           setFollowed(true);
           setFollowerID(res.id);
           setFollowers((prevFollowers) => prevFollowers + 1);
@@ -65,7 +66,6 @@ const OthersProfile = () => {
       navigate("/login");
     }
   };
-
   return (
     <div>
       {userInfo && (
@@ -98,7 +98,7 @@ const OthersProfile = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap">
+          <div className="ml-0 flex flex-wrap justify-center md:justify-start md:ml-10">
             {posts.map((items, i) => (
               <PostCards
                 posts={items}

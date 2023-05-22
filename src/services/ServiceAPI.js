@@ -123,14 +123,17 @@ export const getComments = async (post) => {
       return err;
     });
 };
-export const addFollow = async () => {
+export const addFollow = async (user) => {
+  console.log(user);
   const follow = new Follows();
-  follow.set("user", CurrentUser());
+  follow.set("user", user);
+  follow.set("follower", CurrentUser());
   return await follow.save();
 };
-export const getFollowers = async () => {
+
+export const getFollowers = async (userInfo) => {
   const query = new Parse.Query(Follows);
-  query.include("user");
+  query.equalTo("user", userInfo);
   return await query
     .find()
     .then((res) => {
@@ -140,16 +143,21 @@ export const getFollowers = async () => {
       return err;
     });
 };
-export const getFollowedorNot = async () => {
+
+export const getFollowedorNot = async (userInfo) => {
+  console.log(userInfo);
   const query = new Parse.Query(Follows);
-  query.equalTo("user", CurrentUser());
+  query.equalTo("user", userInfo);
+  query.equalTo("follower", CurrentUser());
   return await query
     .find()
     .then((res) => {
+      console.log(res);
       return res;
     })
     .catch((err) => err);
 };
+
 export const removeFollow = async (followId) => {
   const query = new Parse.Query(Follows);
   const follows = await query.get(followId);

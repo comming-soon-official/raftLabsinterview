@@ -137,8 +137,8 @@ const PostCards = ({
     });
   };
   return (
-    <div className="flex flex-col">
-      <div className="card w-96 bg-base-100 shadow-lg border-2 m-5">
+    <div className="flex flex-col ">
+      <div className="card w-[430px] bg-base-100 shadow-lg border-2 m-5">
         {image ? (
           <figure className="px-10 pt-10">
             <img src={image} alt="Shoes" className="rounded-xl" />
@@ -151,7 +151,7 @@ const PostCards = ({
               onClick={() => getUsername(username)}
               className="opacity-70 cursor-pointer"
             >
-              <span className="font-semibold"> profile :</span> {username}
+              <span className="font-semibold"> Username :</span> {username}
             </div>
           ) : null}{" "}
           <div className="flex flex-wrap">
@@ -160,7 +160,7 @@ const PostCards = ({
                 <div
                   key={i}
                   onClick={() => getUsername(values.value)}
-                  className="bg-base-300 p-1 rounded-lg text-sm cursor-pointer mx-1"
+                  className="bg-base-300 p-1 rounded-lg text-sm cursor-pointer m-1"
                 >
                   {values.label}
                 </div>
@@ -217,13 +217,13 @@ const PostCards = ({
                     return (
                       <div key={i}>
                         <div className="w-full bg-base-200 p-2 my-2 rounded-xl">
-                          <div>{items.comment}</div>
                           <p
                             onClick={() => getUsername(items.username)}
                             className="cursor-pointer text-xs opacity-70"
                           >
                             @{items.username}
                           </p>
+                          <div className="ml-2">{items.comment}</div>
                         </div>
                       </div>
                     );
