@@ -137,8 +137,8 @@ const PostCards = ({
     });
   };
   return (
-    <div className="flex flex-col ">
-      <div className="card w-[430px] bg-base-100 shadow-lg border-2 m-5">
+ <div className="flex flex-col ">
+      <div className="card max-w-md w-fit bg-base-100 shadow-lg border-2 m-5 md:w-[430px]">
         {image ? (
           <figure className="px-10 pt-10">
             <img src={image} alt="Shoes" className="rounded-xl" />

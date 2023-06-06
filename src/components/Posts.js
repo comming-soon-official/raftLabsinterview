@@ -18,7 +18,7 @@ const Posts = () => {
   //   console.log(items.posts.get("mentions"));
   // });
   return (
-    <div className="ml-0 flex flex-wrap justify-center md:justify-start md:ml-10">
+    <div className="ml-0 flex flex-wrap justify-center ">
       {searchedposts
         ? allPosts.map((items, i) => (
             <PostCards
